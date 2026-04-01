@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Netflox ❤</title>
+<title>Netflix ❤</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
 
@@ -1089,6 +1089,26 @@ const allCards = [
 /* ═══════════════════════════════
    IMAGE STORAGE (base64 via localStorage)
 ═══════════════════════════════ */
+function compressImage(file, maxDim, quality, callback) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      let w = img.width, h = img.height;
+      if (w > maxDim || h > maxDim) {
+        if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+        else       { w = Math.round(w * maxDim / h); h = maxDim; }
+      }
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      callback(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function saveImage(key, base64) {
   try { localStorage.setItem('nflx_img_'+key, base64); } catch(e) { /* storage full */ }
 }
@@ -1517,33 +1537,27 @@ function pickPhoto(id, bgId){
 
 function applyPhoto(inp){
   const f = inp.files[0]; if(!f||!_pid) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const b64 = e.target.result;
+  compressImage(f, 800, 0.78, b64 => {
     saveImage(_pid, b64);
     applyImageToCard(_pid, _pbg, b64);
     toast('📸 Foto salva!');
-  };
-  reader.readAsDataURL(f);
+  });
   inp.value='';
 }
 
 function applyHero(inp){
   const f = inp.files[0]; if(!f) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const b64 = e.target.result;
+  compressImage(f, 1200, 0.82, b64 => {
     saveImage('hero', b64);
     const img = document.getElementById('heroImg');
     img.src=b64; img.style.display='block';
     document.getElementById('heroHint').style.display='none';
     document.getElementById('heroDefaultBg').style.display='none';
     toast('📸 Capa principal salva!');
-  };
-  reader.readAsDataURL(f);
+  });
   inp.value='';
 }
-
+  
 /* ═══════════════════════════════
    EXPORT
 ═══════════════════════════════ */
@@ -1601,6 +1615,11 @@ function doExport(){
 
     // Get current HTML
     let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+    // ✅ ADICIONA ISSO: limpa modais abertos no snapshot
+html = html.replace(/class="emodal open"/g, 'class="emodal"');
+html = html.replace(/class="vmodal open"/g, 'class="vmodal"');
+html = html.replace(/class="nfx-player open"/g, 'class="nfx-player"');
 
     // Remove any previous embedded script if re-exporting
     html = html.replace(/<script id="__embedded_data__">[\s\S]*?<\/script>/g, '');
