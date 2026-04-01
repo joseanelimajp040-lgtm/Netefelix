@@ -1172,6 +1172,7 @@ function imgEl(id){
 // Landscape cards
 (function buildRecom(){
   const row = document.getElementById('rowRecom');
+  row.innerHTML = '';
   recomData.forEach(d => {
     const bgId = d.id+'-bg';
     const isTop10 = d.badge === 'TOP 10';
@@ -1195,6 +1196,7 @@ function imgEl(id){
 // Continue Watching
 (function buildCW(){
   const row = document.getElementById('rowCW');
+  row.innerHTML = '';
   cwData.forEach(d => {
     const bgId = d.id+'-bg';
     const mainBadge = d.main ? `<div style="position:absolute;top:4px;right:4px;z-index:5;background:var(--red);color:#fff;font-size:7.5px;font-weight:800;padding:2px 5px;border-radius:2px;">🏆 #1</div>` : '';
@@ -1222,6 +1224,7 @@ function imgEl(id){
 // História portrait
 (function buildHist(){
   const row = document.getElementById('rowHist');
+  row.innerHTML = '';
   histData.forEach(d => {
     const bgId = d.id+'-bg';
     row.innerHTML += `
@@ -1240,6 +1243,7 @@ function imgEl(id){
 // Top 10
 (function buildTop10(){
   const row = document.getElementById('rowTop10');
+  row.innerHTML = '';
   top10Data.forEach(d => {
     const bgId = d.id+'-bg';
     const mainBadge = d.main ? `<div style="position:absolute;top:4px;right:4px;z-index:5;background:var(--red);color:#fff;font-size:7.5px;font-weight:800;padding:2px 5px;border-radius:2px;animation:glow 2.5s ease-in-out infinite;">🏆 #1</div>` : '';
@@ -1620,6 +1624,7 @@ function doExport(){
 html = html.replace(/class="emodal open"/g, 'class="emodal"');
 html = html.replace(/class="vmodal open"/g, 'class="vmodal"');
 html = html.replace(/class="nfx-player open"/g, 'class="nfx-player"');
+html = html.replace(/class="toast show"/g, 'class="toast"');
 
     // Remove any previous embedded script if re-exporting
     html = html.replace(/<script id="__embedded_data__">[\s\S]*?<\/script>/g, '');
