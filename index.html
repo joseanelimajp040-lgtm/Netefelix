@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Netflix ❤</title>
@@ -693,7 +692,7 @@ body{
 input[type=file]{display:none}
 </style>
 </head>
-<body>
+<body style="">
 
 <!-- ══ HEADER ══ -->
 <header class="hdr">
@@ -701,11 +700,11 @@ input[type=file]{display:none}
     <div class="hdr-name">Para você ❤</div>
     <div class="hdr-icons">
       <button class="export-btn" onclick="openExportModal()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         Enviar
       </button>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
       </svg>
     </div>
   </div>
@@ -713,7 +712,7 @@ input[type=file]{display:none}
     <div class="pill">Séries</div>
     <div class="pill">Filmes</div>
     <div class="pill">Categorias
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
     </div>
     <div class="pill">Curtas</div>
   </div>
@@ -735,8 +734,8 @@ input[type=file]{display:none}
     <!-- Upload hint -->
     <div class="hero-upload-zone" id="heroHint" onclick="event.stopPropagation();document.getElementById('inHeroImg').click()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+        <circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline>
       </svg>
       Toque para adicionar a foto de capa
       <span>A foto vai aparecer aqui ❤</span>
@@ -744,13 +743,13 @@ input[type=file]{display:none}
 
     <!-- Hover upload overlay -->
     <div class="up-ov" onclick="event.stopPropagation();document.getElementById('inHeroImg').click()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
       Trocar foto
     </div>
 
     <!-- Netflix N -->
     <svg class="hero-n" viewBox="0 0 111 190" fill="#E50914">
-      <path d="M0 0h32.5l45.4 130.2V0H111v190H78.5L33 59.8V190H0V0z"/>
+      <path d="M0 0h32.5l45.4 130.2V0H111v190H78.5L33 59.8V190H0V0z"></path>
     </svg>
 
     <!-- Top 1 badge -->
@@ -768,11 +767,11 @@ input[type=file]{display:none}
       </div>
       <div class="hero-btns">
         <button class="btn-w" onclick="event.stopPropagation();playVideo()">
-          <svg viewBox="0 0 24 24" fill="#000"><polygon points="5,3 19,12 5,21"/></svg>
+          <svg viewBox="0 0 24 24" fill="#000"><polygon points="5,3 19,12 5,21"></polygon></svg>
           Assistir
         </button>
         <button class="btn-d" onclick="event.stopPropagation();openModal()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
           Mais info
         </button>
       </div>
@@ -783,38 +782,323 @@ input[type=file]{display:none}
 <!-- ══ ROW: PORQUE VOCÊ VIU... ══ -->
 <div class="section">
   <div class="sec-title">Porque você assistiu "Memórias que não quero esquecer"</div>
-  <div class="scroll-row" id="rowRecom"></div>
+  <div class="scroll-row" id="rowRecom">
+    <div class="card-ls">
+      <div class="card-ls-img gc1" id="r1-bg">
+        <img id="r1" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        
+        <div class="card-lbl">
+          <span class="badge-pill">❤ Especial</span>
+          <span class="badge-pill">Assista já</span>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('r1','r1-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div style="font-size:10px;color:#46d369;font-weight:700;padding:4px 2px 0;">98% para você</div>
+    </div>
+    <div class="card-ls">
+      <div class="card-ls-img gc2" id="r2-bg">
+        <img id="r2" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        <div class="top10-corner">TOP<br>10</div>
+        <div class="card-lbl">
+          
+          <span class="badge-pill">Nova temporada</span>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('r2','r2-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div style="font-size:10px;color:#46d369;font-weight:700;padding:4px 2px 0;">97% para você</div>
+    </div>
+    <div class="card-ls">
+      <div class="card-ls-img gc3" id="r3-bg">
+        <img id="r3" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        
+        <div class="card-lbl">
+          <span class="badge-pill">Novidade</span>
+          
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('r3','r3-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div style="font-size:10px;color:#46d369;font-weight:700;padding:4px 2px 0;">96% para você</div>
+    </div>
+    <div class="card-ls">
+      <div class="card-ls-img gc4" id="r4-bg">
+        <img id="r4" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        
+        <div class="card-lbl">
+          
+          
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('r4','r4-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div style="font-size:10px;color:#46d369;font-weight:700;padding:4px 2px 0;">95% para você</div>
+    </div>
+    <div class="card-ls">
+      <div class="card-ls-img gc5" id="r5-bg">
+        <img id="r5" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        <div class="top10-corner">TOP<br>10</div>
+        <div class="card-lbl">
+          
+          <span class="badge-pill">Novo episódio</span>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('r5','r5-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div style="font-size:10px;color:#46d369;font-weight:700;padding:4px 2px 0;">94% para você</div>
+    </div></div>
 </div>
 
 <!-- ══ ROW: CONTINUAR ASSISTINDO ══ -->
 <div class="section">
   <div class="sec-title">Continuar assistindo</div>
-  <div class="scroll-row" id="rowCW"></div>
+  <div class="scroll-row" id="rowCW">
+    <div class="card-cw" onclick="openModal()">
+      <div class="card-cw-img gc5" id="cw0-bg">
+        <img id="cw0" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        <div style="position:absolute;top:4px;right:4px;z-index:5;background:var(--red);color:#fff;font-size:7.5px;font-weight:800;padding:2px 5px;border-radius:2px;">🏆 #1</div>
+        <div class="play-ov">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"></polygon></svg>
+          </div>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('cw0','cw0-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" style="width:68%"></div></div>
+      <div class="cw-row">
+        <div class="cw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+        <div class="cw-dots">···</div>
+      </div>
+    </div>
+    <div class="card-cw" onclick="">
+      <div class="card-cw-img gc1" id="cw1-bg">
+        <img id="cw1" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        
+        <div class="play-ov">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"></polygon></svg>
+          </div>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('cw1','cw1-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" style="width:35%"></div></div>
+      <div class="cw-row">
+        <div class="cw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+        <div class="cw-dots">···</div>
+      </div>
+    </div>
+    <div class="card-cw" onclick="">
+      <div class="card-cw-img gc2" id="cw2-bg">
+        <img id="cw2" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        
+        <div class="play-ov">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"></polygon></svg>
+          </div>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('cw2','cw2-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" style="width:55%"></div></div>
+      <div class="cw-row">
+        <div class="cw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+        <div class="cw-dots">···</div>
+      </div>
+    </div>
+    <div class="card-cw" onclick="">
+      <div class="card-cw-img gc6" id="cw3-bg">
+        <img id="cw3" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        
+        <div class="play-ov">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"></polygon></svg>
+          </div>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('cw3','cw3-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" style="width:20%"></div></div>
+      <div class="cw-row">
+        <div class="cw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+        <div class="cw-dots">···</div>
+      </div>
+    </div></div>
 </div>
 
 <!-- ══ ROW: NOSSA HISTÓRIA ══ -->
 <div class="section">
   <div class="sec-title">Porque você viu "Nossa história"</div>
-  <div class="scroll-row" id="rowHist"></div>
+  <div class="scroll-row" id="rowHist">
+    <div class="card-pt">
+      <div class="card-pt-img gc1" id="h1-bg">
+        <img id="h1" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:7px;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 55%);z-index:2;">
+          <span style="font-size:9px;color:rgba(255,255,255,0.75);line-height:1.3;">Capítulo 1 — O encontro</span>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('h1','h1-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+    </div>
+    <div class="card-pt">
+      <div class="card-pt-img gc2" id="h2-bg">
+        <img id="h2" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:7px;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 55%);z-index:2;">
+          <span style="font-size:9px;color:rgba(255,255,255,0.75);line-height:1.3;">Capítulo 2 — A paixão</span>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('h2','h2-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+    </div>
+    <div class="card-pt">
+      <div class="card-pt-img gc3" id="h3-bg">
+        <img id="h3" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:7px;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 55%);z-index:2;">
+          <span style="font-size:9px;color:rgba(255,255,255,0.75);line-height:1.3;">Capítulo 3 — Aventuras</span>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('h3','h3-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+    </div>
+    <div class="card-pt">
+      <div class="card-pt-img gc4" id="h4-bg">
+        <img id="h4" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:7px;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 55%);z-index:2;">
+          <span style="font-size:9px;color:rgba(255,255,255,0.75);line-height:1.3;">Capítulo 4 — Cumplicidade</span>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('h4','h4-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+    </div>
+    <div class="card-pt">
+      <div class="card-pt-img gc5" id="h5-bg">
+        <img id="h5" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+        <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:7px;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,transparent 55%);z-index:2;">
+          <span style="font-size:9px;color:rgba(255,255,255,0.75);line-height:1.3;">Capítulo 5 — Amor</span>
+        </div>
+        <div class="up-ov" onclick="event.stopPropagation();pickPhoto('h5','h5-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+      </div>
+    </div></div>
 </div>
 
 <!-- ══ ROW: TOP 10 ══ -->
 <div class="section">
   <div class="sec-title">Brasil: top 10 em curtas hoje</div>
-  <div class="top10-num-row" id="rowTop10"></div>
+  <div class="top10-num-row" id="rowTop10"><div class="t10-item">
+      <div class="t10-num">1</div>
+      <div class="t10-card" onclick="openModal()">
+        <div class="t10-card-img gc5" id="t1-bg">
+          <img id="t1" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+          <div style="position:absolute;top:4px;right:4px;z-index:5;background:var(--red);color:#fff;font-size:7.5px;font-weight:800;padding:2px 5px;border-radius:2px;animation:glow 2.5s ease-in-out infinite;">🏆 #1</div>
+          <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:6px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 50%);z-index:2;">
+            <span style="font-size:8.5px;color:rgba(255,255,255,0.75);line-height:1.3;">Memórias que não quero esquecer</span>
+          </div>
+          <div class="up-ov" onclick="event.stopPropagation();pickPhoto('t1','t1-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+        </div>
+      </div></div><div class="t10-item">
+      <div class="t10-num">2</div>
+      <div class="t10-card">
+        <div class="t10-card-img gc1" id="t2-bg">
+          <img id="t2" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+          
+          <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:6px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 50%);z-index:2;">
+            <span style="font-size:8.5px;color:rgba(255,255,255,0.75);line-height:1.3;">Nosso segundo preferido</span>
+          </div>
+          <div class="up-ov" onclick="event.stopPropagation();pickPhoto('t2','t2-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+        </div>
+      </div></div><div class="t10-item">
+      <div class="t10-num">3</div>
+      <div class="t10-card">
+        <div class="t10-card-img gc2" id="t3-bg">
+          <img id="t3" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+          
+          <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:6px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 50%);z-index:2;">
+            <span style="font-size:8.5px;color:rgba(255,255,255,0.75);line-height:1.3;">A playlist de nós dois</span>
+          </div>
+          <div class="up-ov" onclick="event.stopPropagation();pickPhoto('t3','t3-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+        </div>
+      </div></div><div class="t10-item">
+      <div class="t10-num">4</div>
+      <div class="t10-card">
+        <div class="t10-card-img gc3" id="t4-bg">
+          <img id="t4" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+          
+          <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:6px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 50%);z-index:2;">
+            <span style="font-size:8.5px;color:rgba(255,255,255,0.75);line-height:1.3;">Aquela noite especial</span>
+          </div>
+          <div class="up-ov" onclick="event.stopPropagation();pickPhoto('t4','t4-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+        </div>
+      </div></div><div class="t10-item">
+      <div class="t10-num">5</div>
+      <div class="t10-card">
+        <div class="t10-card-img gc6" id="t5-bg">
+          <img id="t5" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">
+          
+          <div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:6px;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 50%);z-index:2;">
+            <span style="font-size:8.5px;color:rgba(255,255,255,0.75);line-height:1.3;">Nosso lugar favorito</span>
+          </div>
+          <div class="up-ov" onclick="event.stopPropagation();pickPhoto('t5','t5-bg')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+    Foto
+  </div>
+        </div>
+      </div></div></div>
 </div>
 
 <!-- ══ BOTTOM NAV ══ -->
 <nav class="bnav">
   <div class="bni active">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
     <span>Início</span>
   </div>
   <div class="bni">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="2" y="2" width="20" height="20" rx="2.18"/>
-      <line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/>
-      <line x1="2" y1="12" x2="22" y2="12"/>
+      <rect x="2" y="2" width="20" height="20" rx="2.18"></rect>
+      <line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line>
+      <line x1="2" y1="12" x2="22" y2="12"></line>
     </svg>
     <span>Novidades</span>
   </div>
@@ -831,7 +1115,7 @@ input[type=file]{display:none}
     <div class="vmodal-hdr">
       <button class="close-btn" onclick="closeModal()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
       <div class="vmodal-title">Memórias que não quero esquecer</div>
@@ -847,11 +1131,11 @@ input[type=file]{display:none}
       </div>
       <div class="vm-btns">
         <button class="btn-w" onclick="playVideo()">
-          <svg viewBox="0 0 24 24" fill="#000"><polygon points="5,3 19,12 5,21"/></svg>
+          <svg viewBox="0 0 24 24" fill="#000"><polygon points="5,3 19,12 5,21"></polygon></svg>
           Assistir
         </button>
         <button class="btn-d" onclick="toast('Adicionado à lista ✓')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           Minha lista
         </button>
       </div>
@@ -877,16 +1161,16 @@ input[type=file]{display:none}
 <div class="nfx-player" id="nfxPlayer">
 
   <!-- Video element -->
-  <video id="nfxVideo" playsinline></video>
+  <video id="nfxVideo" playsinline="" src="blob:https://joseanelimajp040-lgtm.github.io/48a151c6-0899-478e-aa65-324967534be8"></video>
 
   <!-- Loading spinner -->
-  <div class="nfx-spinner" id="nfxSpinner"></div>
+  <div class="nfx-spinner" id="nfxSpinner" style="display: none;"></div>
 
   <!-- Netflix N splash intro -->
   <div class="nfx-splash" id="nfxSplash">
     <div class="splash-n">
       <svg viewBox="0 0 111 190" fill="#E50914">
-        <path d="M0 0h32.5l45.4 130.2V0H111v190H78.5L33 59.8V190H0V0z"/>
+        <path d="M0 0h32.5l45.4 130.2V0H111v190H78.5L33 59.8V190H0V0z"></path>
       </svg>
     </div>
     <div class="splash-bar"></div>
@@ -895,23 +1179,23 @@ input[type=file]{display:none}
   <!-- Skip flash left -->
   <div class="skip-flash left" id="skipFlashL">
     <div class="skip-flash-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10"/><polyline points="12 2 8 6 12 10"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10"></path><polyline points="12 2 8 6 12 10"></polyline></svg>
       -10s
     </div>
   </div>
   <!-- Skip flash right -->
   <div class="skip-flash right" id="skipFlashR">
     <div class="skip-flash-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2C17.523 2 22 6.477 22 12S17.523 22 12 22 2 17.523 2 12"/><polyline points="12 2 16 6 12 10"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2C17.523 2 22 6.477 22 12S17.523 22 12 22 2 17.523 2 12"></path><polyline points="12 2 16 6 12 10"></polyline></svg>
       +10s
     </div>
   </div>
 
   <!-- Upload overlay (when no video yet) -->
-  <div class="nfx-upload" id="nfxUploadOverlay" onclick="document.getElementById('inVideo').click()">
+  <div class="nfx-upload" id="nfxUploadOverlay" onclick="document.getElementById('inVideo').click()" style="display: none;">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-      <rect x="2" y="2" width="20" height="20" rx="2.18"/>
-      <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+      <rect x="2" y="2" width="20" height="20" rx="2.18"></rect>
+      <circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline>
     </svg>
     <h3>Adicionar o vídeo</h3>
     <p>Selecione o arquivo do seu curta<br>MP4, MOV, AVI, WebM…</p>
@@ -922,13 +1206,13 @@ input[type=file]{display:none}
   <div class="nfx-tap-zone" id="nfxTapZone" onclick="onPlayerTap()"></div>
 
   <!-- Controls overlay -->
-  <div class="nfx-controls" id="nfxControls">
+  <div class="nfx-controls" id="nfxControls" style="">
 
     <!-- TOP BAR -->
     <div class="nfx-top">
       <button class="nfx-back" onclick="closePlayer()" title="Voltar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polyline points="15 18 9 12 15 6"/>
+          <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
       </button>
       <div class="nfx-top-title">Memórias que não quero esquecer</div>
@@ -937,7 +1221,7 @@ input[type=file]{display:none}
 
     <!-- CENTER PLAY/PAUSE BUTTON -->
     <div class="nfx-center-btn" id="nfxCenterBtn" onclick="event.stopPropagation();togglePlay()">
-      <svg id="nfxCenterIcon" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+      <svg id="nfxCenterIcon" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"></polygon></svg>
     </div>
 
     <!-- BOTTOM CONTROLS -->
@@ -945,22 +1229,20 @@ input[type=file]{display:none}
       <!-- Progress -->
       <div class="nfx-prog-wrap" id="nfxProgWrap">
         <div class="nfx-prog-bg">
-          <div class="nfx-prog-fill" id="nfxProgFill"></div>
-          <div class="nfx-prog-thumb" id="nfxProgThumb"></div>
+          <div class="nfx-prog-fill" id="nfxProgFill" style="width: 2.43042%;"></div>
+          <div class="nfx-prog-thumb" id="nfxProgThumb" style="left: 2.43042%;"></div>
         </div>
       </div>
 
       <div class="nfx-btns-row">
         <!-- Play/Pause -->
-        <button class="nfx-btn" id="nfxPlayBtn" onclick="togglePlay()">
-          <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-        </button>
+        <button class="nfx-btn" id="nfxPlayBtn" onclick="togglePlay()"><svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"></polygon></svg></button>
 
         <!-- Skip back 10s -->
         <button class="nfx-skip" onclick="skipVideo(-10)">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10"/>
-            <polyline points="12 2 8 6 12 10"/>
+            <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10"></path>
+            <polyline points="12 2 8 6 12 10"></polyline>
           </svg>
           <span>10s</span>
         </button>
@@ -968,33 +1250,33 @@ input[type=file]{display:none}
         <!-- Skip forward 10s -->
         <button class="nfx-skip" onclick="skipVideo(10)">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <path d="M12 2C17.523 2 22 6.477 22 12S17.523 22 12 22 2 17.523 2 12"/>
-            <polyline points="12 2 16 6 12 10"/>
+            <path d="M12 2C17.523 2 22 6.477 22 12S17.523 22 12 22 2 17.523 2 12"></path>
+            <polyline points="12 2 16 6 12 10"></polyline>
           </svg>
           <span>10s</span>
         </button>
 
         <!-- Time -->
-        <div class="nfx-time" id="nfxTime">0:00 / 0:00</div>
+        <div class="nfx-time" id="nfxTime">0:01 / 0:59</div>
 
         <div class="nfx-spacer"></div>
 
         <!-- Volume/Mute -->
         <button class="nfx-btn" id="nfxMuteBtn" onclick="toggleMute()">
           <svg id="nfxVolIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
           </svg>
         </button>
 
         <!-- Fullscreen -->
         <button class="nfx-btn" onclick="toggleFullscreen()">
           <svg id="nfxFsIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <polyline points="15 3 21 3 21 9"/>
-            <polyline points="9 21 3 21 3 15"/>
-            <line x1="21" y1="3" x2="14" y2="10"/>
-            <line x1="3" y1="21" x2="10" y2="14"/>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
           </svg>
         </button>
       </div>
@@ -1031,7 +1313,7 @@ input[type=file]{display:none}
     <div class="emodal-btns">
       <button class="emodal-cancel" onclick="closeExportModal()">Voltar</button>
       <button class="emodal-download" onclick="doExport()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         Baixar HTML
       </button>
     </div>
@@ -1040,11 +1322,11 @@ input[type=file]{display:none}
 
 <!-- HIDDEN FILE INPUTS -->
 <input type="file" id="inHeroImg" accept="image/*" onchange="applyHero(this)">
-<input type="file" id="inVideo"   accept="video/*" onchange="loadVid(this)">
-<input type="file" id="inPhoto"   accept="image/*" onchange="applyPhoto(this)">
+<input type="file" id="inVideo" accept="video/*" onchange="loadVid(this)">
+<input type="file" id="inPhoto" accept="image/*" onchange="applyPhoto(this)">
 
 <!-- TOAST -->
-<div class="toast" id="toastEl"></div>
+<div class="toast" id="toastEl">⏳ Preparando arquivo...</div>
 
 <script>
 /* ═══════════════════════════════
@@ -1587,80 +1869,64 @@ function doExport(){
     } catch(e) {}
 
     // Build the auto-restore script to inject
-    const embedScript = `
-<script id="__embedded_data__">
-(function(){
-  var _d=${JSON.stringify(embedded)};
-  function applyAll(){
-    var h=_d['hero'];
-    if(h){
-      var i=document.getElementById('heroImg');
-      if(i){i.src=h;i.style.display='block';}
-      var hint=document.getElementById('heroHint');
-      if(hint)hint.style.display='none';
-      var bg=document.getElementById('heroDefaultBg');
-      if(bg)bg.style.display='none';
+    // Build the auto-restore script to inject
+    const embedScript = [
+      '<scr'+'ipt id="__embedded_data__">',
+      '(function(){',
+      '  var _d={};',
+      Object.entries(embedded).map(([k,v]) => `  _d[${JSON.stringify(k)}]=${JSON.stringify(v)};`).join('\n'),
+      '  function applyAll(){',
+      '    var h=_d["hero"];',
+      '    if(h){',
+      '      var i=document.getElementById("heroImg");',
+      '      if(i){i.src=h;i.style.display="block";}',
+      '      var hint=document.getElementById("heroHint");',
+      '      if(hint)hint.style.display="none";',
+      '      var bg=document.getElementById("heroDefaultBg");',
+      '      if(bg)bg.style.display="none";',
+      '    }',
+      '    Object.keys(_d).forEach(function(id){',
+      '      if(id==="hero")return;',
+      '      var img=document.getElementById(id);',
+      '      if(img){img.src=_d[id];img.style.display="block";}',
+      '      var bg=document.getElementById(id+"-bg");',
+      '      if(bg){bg.className=bg.className.replace(/\\bgc\\d\\b/,"");bg.style.background="none";}',
+      '    });',
+      '  }',
+      '  if(document.readyState==="loading"){',
+      '    document.addEventListener("DOMContentLoaded",function(){setTimeout(applyAll,100);});',
+      '  } else { setTimeout(applyAll,100); }',
+      '})();',
+      '</'+'script>'
+    ].join('\n');
+
+    // Get current HTML and inject the embedded script before </body>
+    try {
+      let html = document.documentElement.outerHTML;
+      // Remove any existing embedded data script to avoid duplication
+      html = html.replace(/<script id="__embedded_data__">[\s\S]*?<\/script>/g, '');
+      // Inject before </body>
+      const bodyClose = html.lastIndexOf('</body>');
+      if (bodyClose !== -1) {
+        html = html.slice(0, bodyClose) + '\n' + embedScript + '\n</body></html>';
+      } else {
+        html += '\n' + embedScript;
+      }
+
+      const blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = 'netflox-para-voce.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+      toast('✅ Arquivo baixado com sucesso!');
+    } catch(err) {
+      toast('❌ Erro ao exportar: ' + err.message);
     }
-    Object.keys(_d).forEach(function(id){
-      if(id==='hero')return;
-      var img=document.getElementById(id);
-      if(img){img.src=_d[id];img.style.display='block';}
-      var bg=document.getElementById(id+'-bg');
-      if(bg){bg.className=bg.className.replace(/\\bgc\\d\\b/,'');bg.style.background='none';}
-    });
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',function(){setTimeout(applyAll,100);});
-  } else {
-    setTimeout(applyAll,100);
-  }
-})();
-<\/script>`;
-
-    // Get current HTML
-    let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-
-    // ✅ ADICIONA ISSO: limpa modais abertos no snapshot
-html = html.replace(/class="emodal open"/g, 'class="emodal"');
-html = html.replace(/class="vmodal open"/g, 'class="vmodal"');
-html = html.replace(/class="nfx-player open"/g, 'class="nfx-player"');
-html = html.replace(/class="toast show"/g, 'class="toast"');
-
-    // Remove any previous embedded script if re-exporting
-    html = html.replace(/<script id="__embedded_data__">[\s\S]*?<\/script>/g, '');
-
-    // Inject before </body>
-    html = html.replace('</body>', embedScript + '\n</body>');
-
-    // Download
-    const blob = new Blob([html], {type:'text/html;charset=utf-8'});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'netflox-para-voce.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-
-    closeExportModal();
-    toast('✅ Arquivo baixado! Envie pra ela ❤');
-  }, 300);
+  }, 500);
 }
-
-/* ═══════════════════════════════
-   TOAST
-═══════════════════════════════ */
-function toast(msg){
-  const el = document.getElementById('toastEl');
-  el.textContent=msg;
-  el.classList.add('show');
-  clearTimeout(el._t);
-  el._t = setTimeout(()=>el.classList.remove('show'), 3200);
-}
-
-/* ═══════════════════════════════
-   INIT — restore saved images
-═══════════════════════════════ */
-restoreAllImages();
 </script>
-</body>
-</html>
+</body></html>
