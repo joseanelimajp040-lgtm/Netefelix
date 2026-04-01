@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Netflox</title>
+<title>Netflox ❤</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
 
@@ -38,17 +38,27 @@ body{
   padding:54px 14px 0;
   background:linear-gradient(to bottom,rgba(13,13,13,0.98) 70%,transparent);
 }
-
 .hdr-row{
   display:flex;align-items:center;
   justify-content:space-between;
   margin-bottom:12px;
 }
-
 .hdr-name{font-size:23px;font-weight:800;letter-spacing:-0.3px}
-
-.hdr-icons{display:flex;gap:18px;align-items:center}
+.hdr-icons{display:flex;gap:14px;align-items:center}
 .hdr-icons svg{width:23px;height:23px;color:#fff;cursor:pointer}
+
+/* EXPORT BTN */
+.export-btn{
+  background:var(--red);color:#fff;
+  border:none;border-radius:20px;
+  padding:6px 14px;font-size:12px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;gap:5px;
+  letter-spacing:0.2px;white-space:nowrap;
+  transition:opacity .15s;
+  box-shadow:0 0 12px rgba(229,9,20,0.4);
+}
+.export-btn:active{opacity:.8}
+.export-btn svg{width:13px;height:13px}
 
 /* PILLS */
 .pills{
@@ -57,19 +67,11 @@ body{
   overflow-x:auto;scrollbar-width:none;
 }
 .pills::-webkit-scrollbar{display:none}
-
 .pill{
-  flex-shrink:0;
-  border:1.5px solid var(--pill-border);
-  border-radius:20px;
-  padding:5px 16px;
-  font-size:14px;
-  color:#fff;
-  background:rgba(0,0,0,0.2);
-  cursor:pointer;
-  display:flex;align-items:center;gap:3px;
-  white-space:nowrap;
-  letter-spacing:0.1px;
+  flex-shrink:0;border:1.5px solid var(--pill-border);border-radius:20px;
+  padding:5px 16px;font-size:14px;color:#fff;
+  background:rgba(0,0,0,0.2);cursor:pointer;
+  display:flex;align-items:center;gap:3px;white-space:nowrap;
 }
 .pill svg{width:13px;height:13px}
 
@@ -77,50 +79,79 @@ body{
    HERO CARD
 ═══════════════════════════════ */
 .hero-wrap{
-  margin:6px 14px 24px;
-  border-radius:10px;
+  margin:6px 14px 24px;border-radius:10px;
+  overflow:hidden;position:relative;background:#1a1a1a;cursor:pointer;
+}
+.hero-poster{
+  position:relative;width:100%;padding-top:138%;
   overflow:hidden;
-  position:relative;
-  background:#1a1a1a;
-  cursor:pointer;
 }
 
-/* The poster area — tall */
-.hero-poster{
-  position:relative;
-  width:100%;
-  /* Netflix hero is approx 1:1.35 ratio on mobile */
-  padding-top:138%;
+/* Default romantic background when no photo uploaded */
+.hero-default-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,#1a0a1a 0%,#2a0d2a 25%,#1a0d0d 50%,#0d0a1a 80%,#0a0a0d 100%);
   overflow:hidden;
-  background:linear-gradient(160deg,#1a0508 0%,#2d0a10 40%,#1a0a18 80%,#0a0a1a 100%);
 }
+/* Bokeh circles for romantic effect */
+.hero-default-bg::before{
+  content:'';position:absolute;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(229,9,20,0.18) 0%,transparent 70%);
+  top:20%;left:10%;
+  animation:float1 6s ease-in-out infinite;
+}
+.hero-default-bg::after{
+  content:'';position:absolute;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(180,30,100,0.12) 0%,transparent 70%);
+  top:5%;right:-40px;
+  animation:float2 8s ease-in-out infinite;
+}
+.bokeh-extra{
+  position:absolute;
+  width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(229,9,20,0.1) 0%,transparent 70%);
+  bottom:30%;right:20%;
+  animation:float1 7s ease-in-out infinite reverse;
+  pointer-events:none;
+}
+.bokeh-hearts{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:80px;opacity:0.06;
+  pointer-events:none;
+  letter-spacing:20px;
+  filter:blur(2px);
+  animation:pulse-soft 4s ease-in-out infinite;
+}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-30px) scale(1.1)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-15px,20px) scale(0.95)}}
+@keyframes pulse-soft{0%,100%{opacity:0.05}50%{opacity:0.09}}
 
 .hero-poster>*{position:absolute;inset:0}
-
-.hero-img{width:100%;height:100%;object-fit:cover;display:none}
+.hero-img{width:100%;height:100%;object-fit:cover;display:none;z-index:2}
 
 .hero-upload-zone{
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  gap:10px;color:rgba(255,255,255,0.3);
-  font-size:13px;text-align:center;
-  cursor:pointer;padding:20px;
+  gap:10px;color:rgba(255,255,255,0.4);
+  font-size:13px;text-align:center;padding:20px;
+  cursor:pointer;z-index:4;
+  background:transparent;
 }
-.hero-upload-zone svg{width:40px;height:40px;color:rgba(255,255,255,0.2)}
+.hero-upload-zone svg{width:44px;height:44px;color:rgba(255,255,255,0.25)}
+.hero-upload-zone span{font-size:11px;color:rgba(255,255,255,0.25);margin-top:2px}
 
-/* Netflix N — top left */
-.hero-n{
-  position:absolute;top:12px;left:12px;z-index:10;
-  width:24px;height:auto;
-}
+/* Netflix N */
+.hero-n{position:absolute;top:12px;left:12px;z-index:10;width:24px;height:auto}
 
-/* #1 badge — top right */
+/* #1 badge */
 .hero-badge-1{
   position:absolute;top:12px;right:12px;z-index:10;
   background:var(--red);color:#fff;
   font-size:9px;font-weight:800;letter-spacing:1px;
-  padding:3px 7px;border-radius:3px;
-  text-transform:uppercase;
+  padding:3px 7px;border-radius:3px;text-transform:uppercase;
   animation:glow 2.5s ease-in-out infinite;
 }
 @keyframes glow{
@@ -128,47 +159,34 @@ body{
   50%{box-shadow:0 0 20px rgba(229,9,20,1),0 0 30px rgba(229,9,20,0.4)}
 }
 
-/* Gradient over bottom of poster */
 .hero-grad{
-  position:absolute;
-  bottom:0;left:0;right:0;top:40%;
+  position:absolute;bottom:0;left:0;right:0;top:40%;
   background:linear-gradient(to top,#141414 0%,rgba(20,20,20,0.85) 35%,transparent 100%);
   z-index:5;pointer-events:none;
 }
-
-/* Title + buttons overlaid at bottom */
 .hero-info{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  z-index:6;
-  padding:0 14px 18px;
+  position:absolute;bottom:0;left:0;right:0;
+  z-index:6;padding:0 14px 18px;
 }
-
 .hero-title{
   font-size:30px;font-weight:900;
   letter-spacing:-0.5px;line-height:1.05;
   text-align:center;margin-bottom:6px;
   text-shadow:0 2px 12px rgba(0,0,0,0.8);
 }
-
 .hero-genres{
   display:flex;align-items:center;justify-content:center;
   gap:6px;font-size:13px;color:rgba(255,255,255,0.75);
-  margin-bottom:16px;letter-spacing:0.1px;
+  margin-bottom:16px;
 }
 .hero-genres .dot{color:rgba(255,255,255,0.4);font-size:10px}
-
-.hero-btns{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:8px;
-}
+.hero-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 
 .btn-w{
   height:42px;border-radius:5px;
   display:flex;align-items:center;justify-content:center;
   gap:7px;font-size:15px;font-weight:700;
-  border:none;cursor:pointer;
-  background:#fff;color:#000;
+  border:none;cursor:pointer;background:#fff;color:#000;
   transition:opacity .15s;
 }
 .btn-w:active{opacity:.8}
@@ -180,8 +198,7 @@ body{
   gap:7px;font-size:15px;font-weight:600;
   border:none;cursor:pointer;
   background:rgba(60,60,60,0.92);color:#fff;
-  transition:opacity .15s;
-  backdrop-filter:blur(4px);
+  transition:opacity .15s;backdrop-filter:blur(4px);
 }
 .btn-d:active{opacity:.8}
 .btn-d svg{width:18px;height:18px}
@@ -190,122 +207,57 @@ body{
    SECTION ROWS
 ═══════════════════════════════ */
 .section{margin-bottom:22px}
-
-.sec-title{
-  font-size:17px;font-weight:700;
-  padding:0 14px;margin-bottom:10px;
-  letter-spacing:0.1px;
-}
-
+.sec-title{font-size:17px;font-weight:700;padding:0 14px;margin-bottom:10px;letter-spacing:0.1px}
 .scroll-row{
-  display:flex;gap:5px;
-  padding:0 14px;
-  overflow-x:auto;scrollbar-width:none;
-  padding-bottom:2px;
+  display:flex;gap:5px;padding:0 14px;
+  overflow-x:auto;scrollbar-width:none;padding-bottom:2px;
 }
 .scroll-row::-webkit-scrollbar{display:none}
 
-/* ─ LANDSCAPE CARD ─ */
-.card-ls{
-  flex-shrink:0;width:130px;
-  cursor:pointer;position:relative;
-}
-
+/* LANDSCAPE CARD */
+.card-ls{flex-shrink:0;width:130px;cursor:pointer;position:relative}
 .card-ls-img{
-  width:100%;aspect-ratio:16/9;
-  border-radius:var(--card-radius);
-  overflow:hidden;position:relative;
-  background:#222;
+  width:100%;aspect-ratio:16/9;border-radius:var(--card-radius);
+  overflow:hidden;position:relative;background:#222;
 }
-.card-ls-img img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
-  position:absolute;inset:0;
-}
-.card-ls-ph{
-  width:100%;height:100%;
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-end;
-  padding:6px;
-}
-.card-ls-ph-title{
-  font-size:9px;color:rgba(255,255,255,0.5);
-  text-align:center;line-height:1.3;
-}
-
-/* Label at bottom of card */
+.card-ls-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
 .card-lbl{
-  position:absolute;
-  bottom:0;left:0;right:0;
+  position:absolute;bottom:0;left:0;right:0;
   background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
-  padding:14px 5px 5px;
-  border-radius:0 0 var(--card-radius) var(--card-radius);
-  z-index:4;
+  padding:14px 5px 5px;border-radius:0 0 var(--card-radius) var(--card-radius);z-index:4;
 }
 .badge-pill{
   display:inline-flex;align-items:center;
   background:var(--red);color:#fff;
   font-size:8.5px;font-weight:800;letter-spacing:0.3px;
-  padding:2px 6px;border-radius:2px;
-  margin-bottom:2px;
-  line-height:1.4;
+  padding:2px 6px;border-radius:2px;margin-bottom:2px;line-height:1.4;
 }
-.badge-text{
-  font-size:10px;font-weight:700;
-  color:rgba(255,255,255,0.9);
-  display:block;line-height:1.3;
-}
-
-/* TOP 10 badge corner */
+.badge-text{font-size:10px;font-weight:700;color:rgba(255,255,255,0.9);display:block;line-height:1.3}
 .top10-corner{
   position:absolute;top:4px;right:4px;z-index:5;
-  background:var(--red);color:#fff;
-  font-size:7.5px;font-weight:800;
-  padding:2px 5px;border-radius:2px;
-  letter-spacing:0.3px;
+  background:var(--red);color:#fff;font-size:7.5px;font-weight:800;
+  padding:2px 5px;border-radius:2px;letter-spacing:0.3px;
 }
 
-/* ─ PORTRAIT CARD ─ */
-.card-pt{
-  flex-shrink:0;width:100px;
-  cursor:pointer;
-}
+/* PORTRAIT CARD */
+.card-pt{flex-shrink:0;width:100px;cursor:pointer}
 .card-pt-img{
-  width:100%;aspect-ratio:2/3;
-  border-radius:var(--card-radius);
-  overflow:hidden;position:relative;
-  background:#222;
+  width:100%;aspect-ratio:2/3;border-radius:var(--card-radius);
+  overflow:hidden;position:relative;background:#222;
 }
-.card-pt-img img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
-  position:absolute;inset:0;
-}
+.card-pt-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
 
-/* ─ CONTINUE WATCHING CARD ─ */
-.card-cw{
-  flex-shrink:0;width:150px;
-  cursor:pointer;
-}
+/* CONTINUE WATCHING */
+.card-cw{flex-shrink:0;width:150px;cursor:pointer}
 .card-cw-img{
-  width:100%;aspect-ratio:16/9;
-  border-radius:var(--card-radius);
-  overflow:hidden;position:relative;
-  background:#222;
+  width:100%;aspect-ratio:16/9;border-radius:var(--card-radius);
+  overflow:hidden;position:relative;background:#222;
 }
-.card-cw-img img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
-  position:absolute;inset:0;
-}
-
-/* Play circle overlay */
+.card-cw-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
 .play-ov{
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
-  background:rgba(0,0,0,0.2);
-  z-index:3;
+  background:rgba(0,0,0,0.2);z-index:3;
 }
 .play-circle{
   width:42px;height:42px;border-radius:50%;
@@ -314,89 +266,52 @@ body{
   display:flex;align-items:center;justify-content:center;
 }
 .play-circle svg{width:16px;height:16px;margin-left:2px}
-
-/* Progress bar */
 .prog-bar{
   height:3px;background:rgba(255,255,255,0.18);
-  border-radius:0 0 var(--card-radius) var(--card-radius);
-  overflow:hidden;
+  border-radius:0 0 var(--card-radius) var(--card-radius);overflow:hidden;
 }
 .prog-fill{height:100%;background:var(--red);border-radius:0}
-
-/* Info + dots row */
-.cw-row{
-  display:flex;align-items:center;gap:12px;
-  padding:7px 2px 2px;
-}
+.cw-row{display:flex;align-items:center;gap:12px;padding:7px 2px 2px}
 .cw-icon{
   width:30px;height:30px;border-radius:50%;
   border:1.5px solid rgba(255,255,255,0.45);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
 }
 .cw-icon svg{width:13px;height:13px;color:#fff}
 .cw-dots{
   width:30px;height:30px;border-radius:50%;
   border:1.5px solid rgba(255,255,255,0.45);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
   font-size:13px;letter-spacing:-1.5px;padding-bottom:2px;
 }
 
-/* TOP10 number style (big outline numbers) */
-.top10-num-row{
-  display:flex;gap:0;
-  padding:0 14px;
-  overflow-x:auto;scrollbar-width:none;
-}
+/* TOP 10 */
+.top10-num-row{display:flex;gap:0;padding:0 14px;overflow-x:auto;scrollbar-width:none}
 .top10-num-row::-webkit-scrollbar{display:none}
-
-.t10-item{
-  flex-shrink:0;
-  display:flex;align-items:flex-end;
-  position:relative;
-  margin-right:8px;
-}
+.t10-item{flex-shrink:0;display:flex;align-items:flex-end;position:relative;margin-right:8px}
 .t10-num{
-  font-size:96px;font-weight:900;
-  color:transparent;
+  font-size:96px;font-weight:900;color:transparent;
   -webkit-text-stroke:2.5px rgba(255,255,255,0.22);
-  font-style:italic;line-height:1;
-  margin-right:-10px;
-  align-self:flex-end;
-  pointer-events:none;
-  z-index:0;
-  flex-shrink:0;
+  font-style:italic;line-height:1;margin-right:-10px;
+  align-self:flex-end;pointer-events:none;z-index:0;flex-shrink:0;
 }
-.t10-item:first-child .t10-num{
-  -webkit-text-stroke:2.5px rgba(255,255,255,0.55);
-}
-.t10-card{
-  width:95px;z-index:1;flex-shrink:0;cursor:pointer;
-}
+.t10-item:first-child .t10-num{-webkit-text-stroke:2.5px rgba(255,255,255,0.55)}
+.t10-card{width:95px;z-index:1;flex-shrink:0;cursor:pointer}
 .t10-card-img{
-  width:100%;aspect-ratio:2/3;
-  border-radius:var(--card-radius);
-  overflow:hidden;background:#222;
-  position:relative;
+  width:100%;aspect-ratio:2/3;border-radius:var(--card-radius);
+  overflow:hidden;background:#222;position:relative;
 }
-.t10-card-img img{
-  width:100%;height:100%;
-  object-fit:cover;display:block;
-  position:absolute;inset:0;
-}
+.t10-card-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
 
-/* Upload overlay on hover */
+/* Upload hover overlay */
 .up-ov{
   position:absolute;inset:0;
-  background:rgba(0,0,0,0.55);
+  background:rgba(0,0,0,0.6);
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  gap:4px;opacity:0;
-  transition:opacity .18s;
-  border-radius:var(--card-radius);
-  z-index:8;cursor:pointer;
-  font-size:9px;color:rgba(255,255,255,0.85);
+  gap:4px;opacity:0;transition:opacity .18s;
+  border-radius:var(--card-radius);z-index:8;cursor:pointer;
+  font-size:9px;color:rgba(255,255,255,0.9);
 }
 .up-ov svg{width:20px;height:20px}
 .card-ls-img:hover .up-ov,
@@ -409,121 +324,108 @@ body{
    BOTTOM NAV
 ═══════════════════════════════ */
 .bnav{
-  position:fixed;bottom:0;left:50%;
-  transform:translateX(-50%);
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
   width:100%;max-width:390px;
   background:rgba(13,13,13,0.97);
   border-top:1px solid rgba(255,255,255,0.07);
-  display:flex;align-items:flex-start;
-  justify-content:space-around;
-  padding:10px 0 24px;
-  z-index:100;
-  backdrop-filter:blur(10px);
+  display:flex;align-items:flex-start;justify-content:space-around;
+  padding:10px 0 24px;z-index:100;backdrop-filter:blur(10px);
 }
 .bni{
-  display:flex;flex-direction:column;
-  align-items:center;gap:4px;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
   min-width:70px;cursor:pointer;
 }
 .bni svg{width:24px;height:24px;color:rgba(255,255,255,0.45)}
 .bni.active svg{color:#fff}
-.bni span{font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:0.1px}
+.bni span{font-size:10px;color:rgba(255,255,255,0.45)}
 .bni.active span{color:#fff}
-
 .bni-avatar{
   width:28px;height:28px;border-radius:4px;
   background:var(--red);overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;position:relative;
+  display:flex;align-items:center;justify-content:center;font-size:12px;
 }
-.bni-avatar img{width:100%;height:100%;object-fit:cover}
-.red-dot{
-  width:8px;height:8px;background:var(--red);
-  border-radius:50%;margin-top:1px;
-  box-shadow:0 0 6px rgba(229,9,20,0.8);
-}
+.red-dot{width:8px;height:8px;background:var(--red);border-radius:50%;margin-top:1px;box-shadow:0 0 6px rgba(229,9,20,0.8)}
 
 /* ═══════════════════════════════
    VIDEO MODAL
 ═══════════════════════════════ */
 .vmodal{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,0.96);
-  z-index:200;
-  display:flex;flex-direction:column;
-  align-items:center;
-  opacity:0;pointer-events:none;
-  transition:opacity .25s;
-  overflow-y:auto;
+  position:fixed;inset:0;background:rgba(0,0,0,0.96);
+  z-index:200;display:flex;flex-direction:column;align-items:center;
+  opacity:0;pointer-events:none;transition:opacity .25s;overflow-y:auto;
 }
 .vmodal.open{opacity:1;pointer-events:all}
-
-.vmodal-inner{
-  width:100%;max-width:390px;
-  background:#141414;
-  min-height:100%;
-  display:flex;flex-direction:column;
-}
-
+.vmodal-inner{width:100%;max-width:390px;background:#141414;min-height:100%;display:flex;flex-direction:column}
 .vmodal-hdr{
-  display:flex;align-items:center;
-  gap:10px;padding:52px 14px 14px;
-  background:#141414;
-  position:sticky;top:0;z-index:10;
+  display:flex;align-items:center;gap:10px;padding:52px 14px 14px;
+  background:#141414;position:sticky;top:0;z-index:10;
 }
 .close-btn{
   width:34px;height:34px;border-radius:50%;
-  background:rgba(255,255,255,0.12);
-  border:none;color:#fff;cursor:pointer;
+  background:rgba(255,255,255,0.12);border:none;color:#fff;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
 }
 .close-btn svg{width:17px;height:17px}
 .vmodal-title{font-size:17px;font-weight:700;flex:1;line-height:1.2}
 
-.vmodal-video{
-  width:100%;aspect-ratio:16/9;
-  background:#000;position:relative;
-  flex-shrink:0;
-}
-#vplayer{width:100%;height:100%;display:none;background:#000}
-
-.vupload{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:14px;text-align:center;padding:24px;
-  background:linear-gradient(160deg,#0d0d0d,#1a0507);
-  cursor:pointer;
-}
-.vupload svg{width:48px;height:48px;color:rgba(255,255,255,0.25)}
-.vupload h3{font-size:16px;color:#fff}
-.vupload p{font-size:13px;color:var(--muted);line-height:1.5}
-.vupload-btn{
-  background:#fff;color:#000;padding:10px 28px;
-  border-radius:5px;font-weight:700;font-size:14px;
-  margin-top:4px;border:none;cursor:pointer;
-}
-
 .vmodal-body{padding:18px 14px}
-
-.vm-film-title{
-  font-size:24px;font-weight:900;
-  letter-spacing:-0.5px;margin-bottom:8px;
-}
-.vm-meta{
-  display:flex;flex-wrap:wrap;gap:8px;
-  align-items:center;margin-bottom:14px;font-size:12px;
-}
+.vm-film-title{font-size:24px;font-weight:900;letter-spacing:-0.5px;margin-bottom:8px}
+.vm-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;font-size:12px}
 .vm-match{color:#46d369;font-weight:700;font-size:13px}
 .vm-year{color:var(--muted)}
 .vm-hd{border:1px solid var(--muted);color:var(--muted);padding:1px 5px;border-radius:2px;font-size:11px}
 .vm-top{background:var(--red);color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:800}
-
 .vm-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-
 .vm-desc{font-size:14px;line-height:1.6;color:#ccc;margin-bottom:16px}
 .vm-chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{background:rgba(255,255,255,0.08);color:var(--muted);padding:4px 12px;border-radius:20px;font-size:12px}
+
+/* EXPORT MODAL */
+.emodal{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  z-index:300;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+  padding:24px;
+}
+.emodal.open{opacity:1;pointer-events:all}
+.emodal-box{
+  background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;padding:28px 24px;width:100%;max-width:360px;
+  text-align:center;
+}
+.emodal-box h2{font-size:20px;font-weight:800;margin-bottom:8px}
+.emodal-box p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.emodal-steps{text-align:left;margin-bottom:20px}
+.emodal-steps li{
+  font-size:13px;color:rgba(255,255,255,0.8);
+  padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.07);
+  display:flex;align-items:flex-start;gap:10px;line-height:1.4;
+}
+.emodal-steps li:last-child{border-bottom:none}
+.step-num{
+  min-width:22px;height:22px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;
+}
+.emodal-img-count{
+  background:rgba(229,9,20,0.15);border:1px solid rgba(229,9,20,0.3);
+  border-radius:10px;padding:12px;margin-bottom:20px;
+  font-size:13px;color:rgba(255,255,255,0.8);
+}
+.emodal-img-count strong{color:var(--red);font-size:20px;display:block;margin-bottom:2px}
+.emodal-btns{display:flex;gap:10px}
+.emodal-cancel{
+  flex:1;height:44px;border-radius:8px;
+  background:rgba(255,255,255,0.1);color:#fff;
+  border:none;cursor:pointer;font-size:14px;font-weight:600;
+}
+.emodal-download{
+  flex:2;height:44px;border-radius:8px;
+  background:var(--red);color:#fff;
+  border:none;cursor:pointer;font-size:14px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.emodal-download svg{width:16px;height:16px}
 
 /* TOAST */
 .toast{
@@ -531,19 +433,262 @@ body{
   transform:translateX(-50%) translateY(10px);
   background:#2a2a2a;border-left:3px solid var(--red);
   color:#fff;padding:11px 18px;border-radius:6px;
-  font-size:13px;z-index:300;opacity:0;
+  font-size:13px;z-index:400;opacity:0;
   transition:all .3s;white-space:nowrap;
   box-shadow:0 4px 20px rgba(0,0,0,0.7);
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* Gradient BG colors for placeholder cards */
+/* Placeholder backgrounds */
 .gc1{background:linear-gradient(160deg,#0e1520,#1a2535)}
 .gc2{background:linear-gradient(160deg,#1a0d1a,#2d1040)}
 .gc3{background:linear-gradient(160deg,#0d1a0d,#183020)}
 .gc4{background:linear-gradient(160deg,#1a1205,#2d2010)}
 .gc5{background:linear-gradient(160deg,#1a0507,#350a10)}
 .gc6{background:linear-gradient(160deg,#0d0d1a,#15153d)}
+
+/* ═══════════════════════════════
+   NETFLIX FULLSCREEN PLAYER
+═══════════════════════════════ */
+.nfx-player{
+  position:fixed;inset:0;z-index:600;
+  background:#000;
+  display:none;
+  align-items:center;justify-content:center;
+}
+.nfx-player.open{display:flex}
+
+#nfxVideo{
+  width:100%;height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* Controls overlay */
+.nfx-controls{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  transition:opacity .4s;
+  pointer-events:all;
+}
+.nfx-controls.hidden{opacity:0;pointer-events:none}
+
+/* Top bar */
+.nfx-top{
+  background:linear-gradient(to bottom,rgba(0,0,0,0.85) 0%,transparent 100%);
+  padding:52px 16px 36px;
+  display:flex;align-items:center;gap:10px;
+}
+.nfx-back{
+  background:none;border:none;color:#fff;cursor:pointer;
+  padding:6px;display:flex;align-items:center;
+  flex-shrink:0;
+}
+.nfx-back svg{width:26px;height:26px}
+.nfx-top-title{
+  font-size:15px;font-weight:700;flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  text-shadow:0 1px 6px rgba(0,0,0,0.8);
+}
+.nfx-top-badge{
+  background:var(--red);color:#fff;
+  font-size:9px;font-weight:800;padding:3px 7px;
+  border-radius:3px;letter-spacing:0.5px;flex-shrink:0;
+}
+
+/* Center tap zone (invisible, for toggle) */
+.nfx-tap-zone{
+  position:absolute;inset:0;z-index:0;cursor:pointer;
+}
+
+/* Big center play/pause (shown when paused) */
+.nfx-center-btn{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(0,0,0,0.55);
+  border:2px solid rgba(255,255,255,0.85);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:2;
+  backdrop-filter:blur(6px);
+  transition:transform .15s,opacity .3s;
+  pointer-events:all;
+}
+.nfx-center-btn:active{transform:translate(-50%,-50%) scale(0.88)}
+.nfx-center-btn svg{width:32px;height:32px;margin-left:3px}
+.nfx-center-btn.playing{display:none}
+
+/* Bottom bar */
+.nfx-bottom{
+  background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.5) 60%,transparent 100%);
+  padding:28px 16px 20px;
+}
+
+/* Progress bar */
+.nfx-prog-wrap{
+  position:relative;height:18px;
+  display:flex;align-items:center;
+  cursor:pointer;margin-bottom:8px;
+  touch-action:none;
+}
+.nfx-prog-bg{
+  position:absolute;left:0;right:0;
+  height:3px;background:rgba(255,255,255,0.28);
+  border-radius:3px;overflow:visible;
+  transition:height .15s;
+}
+.nfx-prog-wrap:hover .nfx-prog-bg,
+.nfx-prog-wrap:active .nfx-prog-bg{height:5px}
+.nfx-prog-fill{
+  height:100%;background:var(--red);
+  border-radius:3px;width:0%;pointer-events:none;
+}
+.nfx-prog-thumb{
+  position:absolute;top:50%;
+  width:14px;height:14px;border-radius:50%;
+  background:#fff;transform:translate(-50%,-50%);
+  box-shadow:0 0 8px rgba(0,0,0,0.6);
+  left:0%;pointer-events:none;
+  transition:transform .15s;
+}
+.nfx-prog-wrap:hover .nfx-prog-thumb,
+.nfx-prog-wrap:active .nfx-prog-thumb{transform:translate(-50%,-50%) scale(1.3)}
+
+/* Controls row */
+.nfx-btns-row{
+  display:flex;align-items:center;gap:2px;
+}
+.nfx-btn{
+  background:none;border:none;color:#fff;cursor:pointer;
+  padding:7px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:opacity .15s;
+}
+.nfx-btn:active{opacity:.65}
+.nfx-btn svg{width:22px;height:22px}
+
+/* Skip button (with label) */
+.nfx-skip{
+  background:none;border:none;color:#fff;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;
+  padding:6px 5px;gap:1px;flex-shrink:0;
+  transition:opacity .15s;
+}
+.nfx-skip:active{opacity:.65}
+.nfx-skip svg{width:26px;height:26px}
+.nfx-skip span{font-size:9px;font-weight:700;letter-spacing:0.2px;color:rgba(255,255,255,0.85)}
+
+.nfx-time{
+  font-size:12px;color:rgba(255,255,255,0.8);
+  font-weight:500;padding:0 4px;white-space:nowrap;
+  flex-shrink:0;
+}
+.nfx-spacer{flex:1}
+
+/* Upload overlay (inside player) */
+.nfx-upload{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:16px;padding:30px;text-align:center;
+  background:linear-gradient(160deg,#0d0d0d 0%,#1a0507 100%);
+  cursor:pointer;z-index:10;
+}
+.nfx-upload svg{width:56px;height:56px;color:rgba(255,255,255,0.2)}
+.nfx-upload h3{font-size:18px;font-weight:800;color:#fff}
+.nfx-upload p{font-size:13px;color:var(--muted);line-height:1.6}
+.nfx-upload-btn{
+  background:#fff;color:#000;
+  padding:12px 32px;border-radius:6px;
+  font-weight:800;font-size:15px;border:none;cursor:pointer;
+  margin-top:4px;
+}
+
+/* Loading spinner */
+.nfx-spinner{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);z-index:5;
+  width:50px;height:50px;
+  border:3px solid rgba(255,255,255,0.1);
+  border-top:3px solid var(--red);
+  border-radius:50%;display:none;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+/* ═══════════════════════════════
+   NETFLIX SPLASH INTRO
+═══════════════════════════════ */
+.nfx-splash{
+  position:absolute;inset:0;z-index:20;
+  background:#000;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:0;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .35s;
+}
+.nfx-splash.show{opacity:1}
+.nfx-splash.fadeout{opacity:0}
+
+.splash-n{
+  animation:nSplash 1.1s cubic-bezier(.25,.46,.45,.94) forwards;
+  opacity:0;
+}
+.splash-n svg{width:70px;height:auto;filter:drop-shadow(0 0 30px rgba(229,9,20,0.8))}
+
+.splash-bar{
+  width:0px;height:2px;background:var(--red);margin-top:18px;
+  border-radius:2px;opacity:0;
+  animation:barGrow 0.9s 0.55s ease-out forwards;
+  box-shadow:0 0 10px rgba(229,9,20,0.7);
+}
+
+@keyframes nSplash{
+  0%  {opacity:0;transform:scale(1.6)}
+  40% {opacity:1;transform:scale(1)}
+  75% {opacity:1;transform:scale(1)}
+  100%{opacity:0;transform:scale(0.8)}
+}
+@keyframes barGrow{
+  0%  {opacity:0;width:0px}
+  20% {opacity:1;width:0px}
+  70% {width:60px;opacity:1}
+  100%{width:60px;opacity:0}
+}
+
+/* Player entrance animation */
+.nfx-player{
+  animation:none;
+}
+.nfx-player.entering{
+  animation:playerEnter .4s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+@keyframes playerEnter{
+  from{opacity:0;transform:scale(1.04)}
+  to  {opacity:1;transform:scale(1)}
+}
+
+/* Skip feedback flash */
+.skip-flash{
+  position:absolute;top:0;bottom:0;width:40%;
+  background:rgba(255,255,255,0.07);
+  pointer-events:none;opacity:0;
+  display:flex;align-items:center;justify-content:center;
+  z-index:15;
+}
+.skip-flash.left{left:0;border-radius:0 50% 50% 0}
+.skip-flash.right{right:0;border-radius:50% 0 0 50%}
+.skip-flash.show{animation:flashFade .45s ease-out forwards}
+@keyframes flashFade{0%{opacity:1}100%{opacity:0}}
+
+.skip-flash-icon{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  color:rgba(255,255,255,0.85);font-size:11px;font-weight:700;
+}
+.skip-flash-icon svg{width:32px;height:32px}
 
 input[type=file]{display:none}
 </style>
@@ -555,10 +700,10 @@ input[type=file]{display:none}
   <div class="hdr-row">
     <div class="hdr-name">Para você ❤</div>
     <div class="hdr-icons">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
+      <button class="export-btn" onclick="openExportModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Enviar
+      </button>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
@@ -576,18 +721,25 @@ input[type=file]{display:none}
 
 <!-- ══ HERO ══ -->
 <div class="hero-wrap" onclick="openModal()">
-  <div class="hero-poster gc5" id="heroBg">
+  <div class="hero-poster" id="heroBg">
+
+    <!-- Default romantic background -->
+    <div class="hero-default-bg" id="heroDefaultBg">
+      <div class="bokeh-extra"></div>
+      <div class="bokeh-hearts">❤❤❤</div>
+    </div>
 
     <!-- Uploaded image -->
     <img class="hero-img" id="heroImg" alt="">
 
-    <!-- Upload hint (shows before photo added) -->
+    <!-- Upload hint -->
     <div class="hero-upload-zone" id="heroHint" onclick="event.stopPropagation();document.getElementById('inHeroImg').click()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <rect x="3" y="3" width="18" height="18" rx="2"/>
         <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
       </svg>
       Toque para adicionar a foto de capa
+      <span>A foto vai aparecer aqui ❤</span>
     </div>
 
     <!-- Hover upload overlay -->
@@ -615,13 +767,13 @@ input[type=file]{display:none}
         <span>Curta especial</span>
       </div>
       <div class="hero-btns">
-        <button class="btn-w" onclick="openModal()">
+        <button class="btn-w" onclick="event.stopPropagation();playVideo()">
           <svg viewBox="0 0 24 24" fill="#000"><polygon points="5,3 19,12 5,21"/></svg>
           Assistir
         </button>
-        <button class="btn-d" onclick="event.stopPropagation();toast('Adicionado à lista ✓')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Minha lista
+        <button class="btn-d" onclick="event.stopPropagation();openModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Mais info
         </button>
       </div>
     </div>
@@ -640,7 +792,7 @@ input[type=file]{display:none}
   <div class="scroll-row" id="rowCW"></div>
 </div>
 
-<!-- ══ ROW: NOSSA HISTÓRIA (portrait) ══ -->
+<!-- ══ ROW: NOSSA HISTÓRIA ══ -->
 <div class="section">
   <div class="sec-title">Porque você viu "Nossa história"</div>
   <div class="scroll-row" id="rowHist"></div>
@@ -676,7 +828,6 @@ input[type=file]{display:none}
 <!-- ══ VIDEO MODAL ══ -->
 <div class="vmodal" id="vmodal">
   <div class="vmodal-inner">
-
     <div class="vmodal-hdr">
       <button class="close-btn" onclick="closeModal()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -684,19 +835,6 @@ input[type=file]{display:none}
         </svg>
       </button>
       <div class="vmodal-title">Memórias que não quero esquecer</div>
-    </div>
-
-    <div class="vmodal-video">
-      <video id="vplayer" controls></video>
-      <div class="vupload" id="vupload" onclick="document.getElementById('inVideo').click()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="2" y="2" width="20" height="20" rx="2.18"/>
-          <polygon points="10 8 16 12 10 16"/>
-        </svg>
-        <h3>Adicionar seu vídeo</h3>
-        <p>Selecione o arquivo do seu curta<br>MP4, MOV, AVI, WebM…</p>
-        <div class="vupload-btn">Escolher arquivo</div>
-      </div>
     </div>
 
     <div class="vmodal-body">
@@ -735,6 +873,171 @@ input[type=file]{display:none}
   </div>
 </div>
 
+<!-- ══ NETFLIX FULLSCREEN PLAYER ══ -->
+<div class="nfx-player" id="nfxPlayer">
+
+  <!-- Video element -->
+  <video id="nfxVideo" playsinline></video>
+
+  <!-- Loading spinner -->
+  <div class="nfx-spinner" id="nfxSpinner"></div>
+
+  <!-- Netflix N splash intro -->
+  <div class="nfx-splash" id="nfxSplash">
+    <div class="splash-n">
+      <svg viewBox="0 0 111 190" fill="#E50914">
+        <path d="M0 0h32.5l45.4 130.2V0H111v190H78.5L33 59.8V190H0V0z"/>
+      </svg>
+    </div>
+    <div class="splash-bar"></div>
+  </div>
+
+  <!-- Skip flash left -->
+  <div class="skip-flash left" id="skipFlashL">
+    <div class="skip-flash-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10"/><polyline points="12 2 8 6 12 10"/></svg>
+      -10s
+    </div>
+  </div>
+  <!-- Skip flash right -->
+  <div class="skip-flash right" id="skipFlashR">
+    <div class="skip-flash-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2C17.523 2 22 6.477 22 12S17.523 22 12 22 2 17.523 2 12"/><polyline points="12 2 16 6 12 10"/></svg>
+      +10s
+    </div>
+  </div>
+
+  <!-- Upload overlay (when no video yet) -->
+  <div class="nfx-upload" id="nfxUploadOverlay" onclick="document.getElementById('inVideo').click()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+      <rect x="2" y="2" width="20" height="20" rx="2.18"/>
+      <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+    </svg>
+    <h3>Adicionar o vídeo</h3>
+    <p>Selecione o arquivo do seu curta<br>MP4, MOV, AVI, WebM…</p>
+    <div class="nfx-upload-btn">Escolher arquivo</div>
+  </div>
+
+  <!-- Tap zone (toggle controls) -->
+  <div class="nfx-tap-zone" id="nfxTapZone" onclick="onPlayerTap()"></div>
+
+  <!-- Controls overlay -->
+  <div class="nfx-controls" id="nfxControls">
+
+    <!-- TOP BAR -->
+    <div class="nfx-top">
+      <button class="nfx-back" onclick="closePlayer()" title="Voltar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+      <div class="nfx-top-title">Memórias que não quero esquecer</div>
+      <div class="nfx-top-badge">🏆 #1</div>
+    </div>
+
+    <!-- CENTER PLAY/PAUSE BUTTON -->
+    <div class="nfx-center-btn" id="nfxCenterBtn" onclick="event.stopPropagation();togglePlay()">
+      <svg id="nfxCenterIcon" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+
+    <!-- BOTTOM CONTROLS -->
+    <div class="nfx-bottom">
+      <!-- Progress -->
+      <div class="nfx-prog-wrap" id="nfxProgWrap">
+        <div class="nfx-prog-bg">
+          <div class="nfx-prog-fill" id="nfxProgFill"></div>
+          <div class="nfx-prog-thumb" id="nfxProgThumb"></div>
+        </div>
+      </div>
+
+      <div class="nfx-btns-row">
+        <!-- Play/Pause -->
+        <button class="nfx-btn" id="nfxPlayBtn" onclick="togglePlay()">
+          <svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        </button>
+
+        <!-- Skip back 10s -->
+        <button class="nfx-skip" onclick="skipVideo(-10)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10"/>
+            <polyline points="12 2 8 6 12 10"/>
+          </svg>
+          <span>10s</span>
+        </button>
+
+        <!-- Skip forward 10s -->
+        <button class="nfx-skip" onclick="skipVideo(10)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M12 2C17.523 2 22 6.477 22 12S17.523 22 12 22 2 17.523 2 12"/>
+            <polyline points="12 2 16 6 12 10"/>
+          </svg>
+          <span>10s</span>
+        </button>
+
+        <!-- Time -->
+        <div class="nfx-time" id="nfxTime">0:00 / 0:00</div>
+
+        <div class="nfx-spacer"></div>
+
+        <!-- Volume/Mute -->
+        <button class="nfx-btn" id="nfxMuteBtn" onclick="toggleMute()">
+          <svg id="nfxVolIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          </svg>
+        </button>
+
+        <!-- Fullscreen -->
+        <button class="nfx-btn" onclick="toggleFullscreen()">
+          <svg id="nfxFsIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <polyline points="15 3 21 3 21 9"/>
+            <polyline points="9 21 3 21 3 15"/>
+            <line x1="21" y1="3" x2="14" y2="10"/>
+            <line x1="3" y1="21" x2="10" y2="14"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ EXPORT MODAL ══ -->
+<div class="emodal" id="emodal">
+  <div class="emodal-box">
+    <h2>📤 Preparar para enviar</h2>
+    <p>Gera um arquivo HTML com todas as fotos já embutidas. Ela abre e já vê tudo certinho!</p>
+
+    <div class="emodal-img-count">
+      <strong id="imgCountNum">0</strong>
+      fotos adicionadas até agora
+    </div>
+
+    <ol class="emodal-steps">
+      <li>
+        <div class="step-num">1</div>
+        <span>Clique em <strong>"Baixar HTML"</strong> — vai baixar um arquivo <em>netflox-para-voce.html</em></span>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <span>Envie esse arquivo pra ela pelo WhatsApp, Drive, etc.</span>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <span>Ela abre no celular e vê as fotos. Para o vídeo, ela precisa selecionar o arquivo na hora ❤</span>
+      </li>
+    </ol>
+
+    <div class="emodal-btns">
+      <button class="emodal-cancel" onclick="closeExportModal()">Voltar</button>
+      <button class="emodal-download" onclick="doExport()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Baixar HTML
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- HIDDEN FILE INPUTS -->
 <input type="file" id="inHeroImg" accept="image/*" onchange="applyHero(this)">
 <input type="file" id="inVideo"   accept="video/*" onchange="loadVid(this)">
@@ -744,69 +1047,123 @@ input[type=file]{display:none}
 <div class="toast" id="toastEl"></div>
 
 <script>
-/* ════════════════════════════════
+/* ═══════════════════════════════
    DATA
-════════════════════════════════ */
-const GC = ['gc1','gc2','gc3','gc4','gc5','gc6'];
-
+═══════════════════════════════ */
 const recomData = [
-  {id:'r1', title:'O nosso primeiro dia',        badge:'❤ Especial',   sub:'Assista já',        match:'98%', gc:'gc1'},
-  {id:'r2', title:'Lugares que visitamos',        badge:'TOP 10',       sub:'Nova temporada',    match:'97%', gc:'gc2'},
-  {id:'r3', title:'Quando tudo começou',          badge:'Novidade',     sub:'',                  match:'96%', gc:'gc3'},
-  {id:'r4', title:'Surpresas e sorrisos',         badge:'',             sub:'',                  match:'95%', gc:'gc4'},
-  {id:'r5', title:'Viagem inesquecível',          badge:'TOP 10',       sub:'Novo episódio',     match:'94%', gc:'gc5'},
+  {id:'r1', title:'O nosso primeiro dia',    badge:'❤ Especial', sub:'Assista já',      match:'98%', gc:'gc1'},
+  {id:'r2', title:'Lugares que visitamos',   badge:'TOP 10',     sub:'Nova temporada',  match:'97%', gc:'gc2'},
+  {id:'r3', title:'Quando tudo começou',     badge:'Novidade',   sub:'',                match:'96%', gc:'gc3'},
+  {id:'r4', title:'Surpresas e sorrisos',    badge:'',           sub:'',                match:'95%', gc:'gc4'},
+  {id:'r5', title:'Viagem inesquecível',     badge:'TOP 10',     sub:'Novo episódio',   match:'94%', gc:'gc5'},
 ];
-
 const cwData = [
   {id:'cw0', prog:68, gc:'gc5', main:true},
   {id:'cw1', prog:35, gc:'gc1', main:false},
   {id:'cw2', prog:55, gc:'gc2', main:false},
   {id:'cw3', prog:20, gc:'gc6', main:false},
 ];
-
 const histData = [
-  {id:'h1', title:'Capítulo 1 — O encontro',    gc:'gc1'},
-  {id:'h2', title:'Capítulo 2 — A paixão',      gc:'gc2'},
-  {id:'h3', title:'Capítulo 3 — Aventuras',     gc:'gc3'},
-  {id:'h4', title:'Capítulo 4 — Cumplicidade',  gc:'gc4'},
-  {id:'h5', title:'Capítulo 5 — Amor',          gc:'gc5'},
+  {id:'h1', title:'Capítulo 1 — O encontro',   gc:'gc1'},
+  {id:'h2', title:'Capítulo 2 — A paixão',     gc:'gc2'},
+  {id:'h3', title:'Capítulo 3 — Aventuras',    gc:'gc3'},
+  {id:'h4', title:'Capítulo 4 — Cumplicidade', gc:'gc4'},
+  {id:'h5', title:'Capítulo 5 — Amor',         gc:'gc5'},
 ];
-
 const top10Data = [
-  {id:'t1', num:'1',  title:'Memórias que não quero esquecer', main:true,  gc:'gc5'},
-  {id:'t2', num:'2',  title:'Nosso segundo preferido',          main:false, gc:'gc1'},
-  {id:'t3', num:'3',  title:'A playlist de nós dois',           main:false, gc:'gc2'},
-  {id:'t4', num:'4',  title:'Aquela noite especial',             main:false, gc:'gc3'},
-  {id:'t5', num:'5',  title:'Nosso lugar favorito',              main:false, gc:'gc6'},
+  {id:'t1', num:'1', title:'Memórias que não quero esquecer', main:true,  gc:'gc5'},
+  {id:'t2', num:'2', title:'Nosso segundo preferido',          main:false, gc:'gc1'},
+  {id:'t3', num:'3', title:'A playlist de nós dois',           main:false, gc:'gc2'},
+  {id:'t4', num:'4', title:'Aquela noite especial',             main:false, gc:'gc3'},
+  {id:'t5', num:'5', title:'Nosso lugar favorito',              main:false, gc:'gc6'},
 ];
 
-/* ════════════════════════════════
+/* All card IDs for iteration */
+const allCards = [
+  ...recomData.map(d => ({id:d.id, bgId:d.id+'-bg'})),
+  ...cwData.map(d => ({id:d.id, bgId:d.id+'-bg'})),
+  ...histData.map(d => ({id:d.id, bgId:d.id+'-bg'})),
+  ...top10Data.map(d => ({id:d.id, bgId:d.id+'-bg'})),
+];
+
+/* ═══════════════════════════════
+   IMAGE STORAGE (base64 via localStorage)
+═══════════════════════════════ */
+function saveImage(key, base64) {
+  try { localStorage.setItem('nflx_img_'+key, base64); } catch(e) { /* storage full */ }
+}
+function loadImage(key) {
+  try { return localStorage.getItem('nflx_img_'+key); } catch(e) { return null; }
+}
+function countImages() {
+  let n = 0;
+  try {
+    for(let k in localStorage) { if(k.startsWith('nflx_img_')) n++; }
+  } catch(e) {}
+  return n;
+}
+
+/* ═══════════════════════════════
+   APPLY IMAGE TO CARD
+═══════════════════════════════ */
+function applyImageToCard(id, bgId, base64) {
+  const img = document.getElementById(id);
+  if(img) { img.src = base64; img.style.display = 'block'; }
+  const bg = document.getElementById(bgId);
+  if(bg) {
+    // Remove gc class
+    bg.className = bg.className.replace(/\bgc\d\b/, '');
+    bg.style.background = 'none';
+  }
+}
+
+/* ═══════════════════════════════
+   RESTORE IMAGES ON LOAD
+═══════════════════════════════ */
+function restoreAllImages() {
+  // Hero
+  const heroB64 = loadImage('hero');
+  if(heroB64) {
+    const img = document.getElementById('heroImg');
+    img.src = heroB64; img.style.display = 'block';
+    document.getElementById('heroHint').style.display = 'none';
+    document.getElementById('heroDefaultBg').style.display = 'none';
+  }
+  // All cards
+  allCards.forEach(({id, bgId}) => {
+    const b64 = loadImage(id);
+    if(b64) applyImageToCard(id, bgId, b64);
+  });
+}
+
+/* ═══════════════════════════════
    BUILDERS
-════════════════════════════════ */
+═══════════════════════════════ */
 function upOv(id, bgId){
   return `<div class="up-ov" onclick="event.stopPropagation();pickPhoto('${id}','${bgId}')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
     Foto
   </div>`;
 }
+function imgEl(id){ 
+  return `<img id="${id}" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;" alt="">`;
+}
 
-function imgEl(id){ return `<img id="${id}" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="">`; }
-
-// Landscape cards (recom row)
+// Landscape cards
 (function buildRecom(){
   const row = document.getElementById('rowRecom');
   recomData.forEach(d => {
     const bgId = d.id+'-bg';
-    const hasBadge = d.badge && d.badge !== 'TOP 10';
-    const isTop10  = d.badge === 'TOP 10';
+    const isTop10 = d.badge === 'TOP 10';
+    const hasBadge = d.badge && !isTop10;
     row.innerHTML += `
     <div class="card-ls">
       <div class="card-ls-img ${d.gc}" id="${bgId}">
         ${imgEl(d.id)}
         ${isTop10 ? `<div class="top10-corner">TOP<br>10</div>` : ''}
         <div class="card-lbl">
-          ${hasBadge ? `<span class="badge-pill">${d.badge}${d.sub?' <br>'+d.sub:''}</span>` : ''}
-          ${!hasBadge && d.sub ? `<span class="badge-pill">${d.sub}</span>` : ''}
+          ${hasBadge ? `<span class="badge-pill">${d.badge}</span>` : ''}
+          ${d.sub ? `<span class="badge-pill">${d.sub}</span>` : ''}
         </div>
         ${upOv(d.id, bgId)}
       </div>
@@ -842,7 +1199,7 @@ function imgEl(id){ return `<img id="${id}" style="display:none;position:absolut
   });
 })();
 
-// Histoire portrait cards
+// História portrait
 (function buildHist(){
   const row = document.getElementById('rowHist');
   histData.forEach(d => {
@@ -860,7 +1217,7 @@ function imgEl(id){ return `<img id="${id}" style="display:none;position:absolut
   });
 })();
 
-// Top 10 row
+// Top 10
 (function buildTop10(){
   const row = document.getElementById('rowTop10');
   top10Data.forEach(d => {
@@ -885,79 +1242,401 @@ function imgEl(id){ return `<img id="${id}" style="display:none;position:absolut
   });
 })();
 
-/* ════════════════════════════════
+/* ═══════════════════════════════
    MODAL
-════════════════════════════════ */
+═══════════════════════════════ */
 function openModal(){
   document.getElementById('vmodal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
 }
 function closeModal(){
   document.getElementById('vmodal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape'){ closeModal(); closeExportModal(); closePlayer(); }
+});
+
+/* ═══════════════════════════════
+   NETFLIX PLAYER
+═══════════════════════════════ */
+const nfx = {
+  loaded: false,
+  controlsVisible: true,
+  timer: null,
+  seeking: false,
+};
+
+const nfxVideo    = () => document.getElementById('nfxVideo');
+const nfxControls = () => document.getElementById('nfxControls');
+const nfxPlayer   = () => document.getElementById('nfxPlayer');
+
+/* ─── Open / Close ─── */
+function playVideo() {
+  const player = nfxPlayer();
+  player.classList.add('open');
+  player.classList.add('entering');
+  setTimeout(() => player.classList.remove('entering'), 420);
+  document.body.style.overflow = 'hidden';
+
+  /* Request fullscreen immediately */
+  setTimeout(() => {
+    if (player.requestFullscreen)             player.requestFullscreen().catch(() => {});
+    else if (player.webkitRequestFullscreen)  player.webkitRequestFullscreen();
+  }, 60);
+
+  if (nfx.loaded && nfxVideo().src) {
+    /* Show splash N first, then play */
+    document.getElementById('nfxUploadOverlay').style.display = 'none';
+    document.getElementById('nfxControls').style.display = '';
+    showSplashAndPlay();
+  } else {
+    /* No video yet — show upload screen */
+    document.getElementById('nfxUploadOverlay').style.display = 'flex';
+    document.getElementById('nfxControls').style.display = 'none';
+  }
+}
+
+function showSplashAndPlay() {
+  const splash = document.getElementById('nfxSplash');
+  splash.classList.add('show');
+  nfxVideo().pause();
+  setTimeout(() => {
+    splash.classList.remove('show');
+    nfxVideo().play().catch(() => {});
+    showControls();
+    resetControlsTimer();
+  }, 1300);
+}
+
+function closePlayer() {
+  nfxVideo().pause();
+  nfxPlayer().classList.remove('open');
   document.body.style.overflow = '';
+  clearTimeout(nfx.timer);
+  if (document.fullscreenElement || document.webkitFullscreenElement) {
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document).catch(() => {});
+  }
 }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
-/* ════════════════════════════════
-   VIDEO
-════════════════════════════════ */
-function loadVid(inp){
-  const f = inp.files[0]; if(!f) return;
-  const p = document.getElementById('vplayer');
-  p.src = URL.createObjectURL(f);
-  p.style.display = 'block';
-  document.getElementById('vupload').style.display = 'none';
-  p.play();
+/* ─── Load video file ─── */
+function loadVid(inp) {
+  const f = inp.files[0]; if (!f) return;
+  const v = nfxVideo();
+  v.src = URL.createObjectURL(f);
+  nfx.loaded = true;
+
+  document.getElementById('nfxUploadOverlay').style.display = 'none';
+  document.getElementById('nfxControls').style.display = '';
+
+  v.addEventListener('timeupdate',     onTimeUpdate);
+  v.addEventListener('play',           onPlay);
+  v.addEventListener('pause',          onPause);
+  v.addEventListener('ended',          onEnded);
+  v.addEventListener('waiting',        () => showSpinner(true));
+  v.addEventListener('canplay',        () => showSpinner(false));
+  v.addEventListener('loadedmetadata', onTimeUpdate);
+
+  /* Show splash then play */
+  showSplashAndPlay();
   toast('🎬 Vídeo carregado!');
-}
-function playVideo(){
-  const p = document.getElementById('vplayer');
-  if(p.src && p.src !== location.href){ p.play(); }
-  else { document.getElementById('inVideo').click(); }
+  inp.value = '';
 }
 
-/* ════════════════════════════════
+/* ─── Play / Pause ─── */
+function togglePlay() {
+  const v = nfxVideo();
+  if (v.paused) v.play().catch(() => {});
+  else          v.pause();
+  resetControlsTimer();
+}
+
+function onPlay() {
+  /* Swap play btn → pause */
+  document.getElementById('nfxPlayBtn').innerHTML =
+    `<svg viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
+  /* Hide big center button */
+  document.getElementById('nfxCenterBtn').classList.add('playing');
+  resetControlsTimer();
+}
+
+function onPause() {
+  /* Swap pause btn → play */
+  document.getElementById('nfxPlayBtn').innerHTML =
+    `<svg viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>`;
+  /* Show big center button */
+  document.getElementById('nfxCenterBtn').classList.remove('playing');
+  document.getElementById('nfxCenterIcon').outerHTML =
+    `<svg id="nfxCenterIcon" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>`;
+  showControls();
+}
+
+function onEnded() {
+  document.getElementById('nfxPlayBtn').innerHTML =
+    `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.14"/></svg>`;
+  document.getElementById('nfxCenterBtn').classList.remove('playing');
+  document.getElementById('nfxCenterIcon').outerHTML =
+    `<svg id="nfxCenterIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.14"/></svg>`;
+  showControls();
+}
+
+/* ─── Skip ─── */
+function skipVideo(sec) {
+  const v = nfxVideo();
+  v.currentTime = Math.max(0, Math.min(v.duration || 0, v.currentTime + sec));
+  resetControlsTimer();
+  /* Flash feedback */
+  const id = sec < 0 ? 'skipFlashL' : 'skipFlashR';
+  const el = document.getElementById(id);
+  if (el) {
+    el.classList.remove('show');
+    void el.offsetWidth; // reflow to restart animation
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 460);
+  }
+}
+
+/* ─── Mute ─── */
+function toggleMute() {
+  const v = nfxVideo();
+  v.muted = !v.muted;
+  const icon = document.getElementById('nfxVolIcon');
+  if (v.muted) {
+    icon.outerHTML = `<svg id="nfxVolIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>`;
+  } else {
+    icon.outerHTML = `<svg id="nfxVolIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>`;
+  }
+  resetControlsTimer();
+}
+
+/* ─── Fullscreen ─── */
+function toggleFullscreen() {
+  const el = nfxPlayer();
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    (el.requestFullscreen || el.webkitRequestFullscreen).call(el).catch(() => {});
+    document.getElementById('nfxFsIcon').outerHTML = `<svg id="nfxFsIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <polyline points="8 3 3 3 3 8"/><polyline points="21 8 21 3 16 3"/>
+      <polyline points="3 16 3 21 8 21"/><polyline points="16 21 21 21 21 16"/>
+    </svg>`;
+  } else {
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document).catch(() => {});
+    document.getElementById('nfxFsIcon').outerHTML = `<svg id="nfxFsIcon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+      <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+    </svg>`;
+  }
+}
+
+/* ─── Progress bar ─── */
+function onTimeUpdate() {
+  const v = nfxVideo();
+  if (!v.duration) return;
+  const pct = (v.currentTime / v.duration) * 100;
+  document.getElementById('nfxProgFill').style.width  = pct + '%';
+  document.getElementById('nfxProgThumb').style.left  = pct + '%';
+  document.getElementById('nfxTime').textContent = fmtTime(v.currentTime) + ' / ' + fmtTime(v.duration);
+}
+
+function fmtTime(s) {
+  if (!s || isNaN(s)) return '0:00';
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+/* Scrubbing */
+(function initScrub() {
+  let scrubbing = false;
+  function seekAt(clientX) {
+    const wrap = document.getElementById('nfxProgWrap');
+    const v = nfxVideo();
+    if (!v.duration || !wrap) return;
+    const rect = wrap.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    v.currentTime = pct * v.duration;
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrap = document.getElementById('nfxProgWrap');
+    if (!wrap) return;
+    wrap.addEventListener('mousedown',  e => { scrubbing=true; seekAt(e.clientX); resetControlsTimer(); });
+    wrap.addEventListener('touchstart', e => { scrubbing=true; seekAt(e.touches[0].clientX); resetControlsTimer(); }, {passive:true});
+    document.addEventListener('mousemove',  e => { if(scrubbing) seekAt(e.clientX); });
+    document.addEventListener('touchmove',  e => { if(scrubbing) seekAt(e.touches[0].clientX); }, {passive:true});
+    document.addEventListener('mouseup',  () => { scrubbing=false; });
+    document.addEventListener('touchend', () => { scrubbing=false; });
+  });
+})();
+
+/* ─── Controls auto-hide ─── */
+function showControls() {
+  nfxControls().classList.remove('hidden');
+  nfx.controlsVisible = true;
+}
+function hideControls() {
+  const v = nfxVideo();
+  if (!v.paused && !v.ended) {
+    nfxControls().classList.add('hidden');
+    nfx.controlsVisible = false;
+  }
+}
+function resetControlsTimer() {
+  showControls();
+  clearTimeout(nfx.timer);
+  nfx.timer = setTimeout(hideControls, 3500);
+}
+function onPlayerTap() {
+  if (nfx.controlsVisible) {
+    clearTimeout(nfx.timer);
+    hideControls();
+  } else {
+    showControls();
+    resetControlsTimer();
+  }
+}
+
+/* ─── Spinner ─── */
+function showSpinner(on) {
+  document.getElementById('nfxSpinner').style.display = on ? 'block' : 'none';
+}
+
+/* ═══════════════════════════════
    PHOTOS
-════════════════════════════════ */
-let _pid = null, _pbg = null;
+═══════════════════════════════ */
+let _pid=null, _pbg=null;
 
 function pickPhoto(id, bgId){
-  _pid = id; _pbg = bgId;
+  _pid=id; _pbg=bgId;
   document.getElementById('inPhoto').click();
 }
 
 function applyPhoto(inp){
-  const f = inp.files[0]; if(!f || !_pid) return;
-  const url = URL.createObjectURL(f);
-  const img = document.getElementById(_pid);
-  if(img){ img.src = url; img.style.display = 'block'; }
-  const bg = document.getElementById(_pbg);
-  if(bg){ bg.className = bg.className.replace(/gc\d/,''); bg.style.background = 'none'; }
-  inp.value = '';
-  toast('📸 Foto adicionada!');
+  const f = inp.files[0]; if(!f||!_pid) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const b64 = e.target.result;
+    saveImage(_pid, b64);
+    applyImageToCard(_pid, _pbg, b64);
+    toast('📸 Foto salva!');
+  };
+  reader.readAsDataURL(f);
+  inp.value='';
 }
 
 function applyHero(inp){
   const f = inp.files[0]; if(!f) return;
-  const url = URL.createObjectURL(f);
-  const img = document.getElementById('heroImg');
-  img.src = url; img.style.display = 'block';
-  document.getElementById('heroHint').style.display = 'none';
-  document.getElementById('heroBg').style.background = 'none';
-  inp.value = '';
-  toast('📸 Capa principal adicionada!');
+  const reader = new FileReader();
+  reader.onload = e => {
+    const b64 = e.target.result;
+    saveImage('hero', b64);
+    const img = document.getElementById('heroImg');
+    img.src=b64; img.style.display='block';
+    document.getElementById('heroHint').style.display='none';
+    document.getElementById('heroDefaultBg').style.display='none';
+    toast('📸 Capa principal salva!');
+  };
+  reader.readAsDataURL(f);
+  inp.value='';
 }
 
-/* ════════════════════════════════
+/* ═══════════════════════════════
+   EXPORT
+═══════════════════════════════ */
+function openExportModal(){
+  document.getElementById('imgCountNum').textContent = countImages();
+  document.getElementById('emodal').classList.add('open');
+}
+function closeExportModal(){
+  document.getElementById('emodal').classList.remove('open');
+}
+
+function doExport(){
+  toast('⏳ Preparando arquivo...');
+  setTimeout(() => {
+    // Collect all stored images
+    const embedded = {};
+    try {
+      for(let k in localStorage){
+        if(k.startsWith('nflx_img_')){
+          embedded[k.replace('nflx_img_','')] = localStorage.getItem(k);
+        }
+      }
+    } catch(e) {}
+
+    // Build the auto-restore script to inject
+    const embedScript = `
+<script id="__embedded_data__">
+(function(){
+  var _d=${JSON.stringify(embedded)};
+  function applyAll(){
+    var h=_d['hero'];
+    if(h){
+      var i=document.getElementById('heroImg');
+      if(i){i.src=h;i.style.display='block';}
+      var hint=document.getElementById('heroHint');
+      if(hint)hint.style.display='none';
+      var bg=document.getElementById('heroDefaultBg');
+      if(bg)bg.style.display='none';
+    }
+    Object.keys(_d).forEach(function(id){
+      if(id==='hero')return;
+      var img=document.getElementById(id);
+      if(img){img.src=_d[id];img.style.display='block';}
+      var bg=document.getElementById(id+'-bg');
+      if(bg){bg.className=bg.className.replace(/\\bgc\\d\\b/,'');bg.style.background='none';}
+    });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(applyAll,100);});
+  } else {
+    setTimeout(applyAll,100);
+  }
+})();
+<\/script>`;
+
+    // Get current HTML
+    let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+    // Remove any previous embedded script if re-exporting
+    html = html.replace(/<script id="__embedded_data__">[\s\S]*?<\/script>/g, '');
+
+    // Inject before </body>
+    html = html.replace('</body>', embedScript + '\n</body>');
+
+    // Download
+    const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'netflox-para-voce.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    closeExportModal();
+    toast('✅ Arquivo baixado! Envie pra ela ❤');
+  }, 300);
+}
+
+/* ═══════════════════════════════
    TOAST
-════════════════════════════════ */
+═══════════════════════════════ */
 function toast(msg){
   const el = document.getElementById('toastEl');
-  el.textContent = msg;
+  el.textContent=msg;
   el.classList.add('show');
   clearTimeout(el._t);
-  el._t = setTimeout(() => el.classList.remove('show'), 3000);
+  el._t = setTimeout(()=>el.classList.remove('show'), 3200);
 }
+
+/* ═══════════════════════════════
+   INIT — restore saved images
+═══════════════════════════════ */
+restoreAllImages();
 </script>
 </body>
 </html>
