@@ -1845,6 +1845,19 @@ function applyHero(inp){
 }
   
 /* ═══════════════════════════════
+   TOAST
+═══════════════════════════════ */
+let _toastTimer;
+function toast(msg) {
+  const el = document.getElementById('toastEl');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+/* ═══════════════════════════════
    EXPORT
 ═══════════════════════════════ */
 function openExportModal(){
@@ -1856,25 +1869,29 @@ function closeExportModal(){
 }
 
 function doExport(){
+  closeExportModal();
   toast('⏳ Preparando arquivo...');
   setTimeout(() => {
-    // Collect all stored images
+    // Collect all stored images from localStorage
     const embedded = {};
     try {
-      for(let k in localStorage){
-        if(k.startsWith('nflx_img_')){
-          embedded[k.replace('nflx_img_','')] = localStorage.getItem(k);
+      for (let k in localStorage) {
+        if (k.startsWith('nflx_img_')) {
+          embedded[k.replace('nflx_img_', '')] = localStorage.getItem(k);
         }
       }
     } catch(e) {}
 
-    // Build the auto-restore script to inject
-    // Build the auto-restore script to inject
-    const embedScript = [
-      '<scr'+'ipt id="__embedded_data__">',
+    // Build the self-restore script block using array join (avoids closing tag in source)
+    const imgLines = Object.entries(embedded)
+      .map(([k, v]) => '  _d[' + JSON.stringify(k) + ']=' + JSON.stringify(v) + ';')
+      .join('\n');
+
+    const embedBlock = [
+      '<scr' + 'ipt id="__embedded_data__">',
       '(function(){',
       '  var _d={};',
-      Object.entries(embedded).map(([k,v]) => `  _d[${JSON.stringify(k)}]=${JSON.stringify(v)};`).join('\n'),
+      imgLines,
       '  function applyAll(){',
       '    var h=_d["hero"];',
       '    if(h){',
@@ -1894,39 +1911,52 @@ function doExport(){
       '    });',
       '  }',
       '  if(document.readyState==="loading"){',
-      '    document.addEventListener("DOMContentLoaded",function(){setTimeout(applyAll,100);});',
-      '  } else { setTimeout(applyAll,100); }',
+      '    document.addEventListener("DOMContentLoaded",function(){setTimeout(applyAll,150);});',
+      '  } else { setTimeout(applyAll,150); }',
       '})();',
-      '</'+'script>'
+      '</' + 'script>'
     ].join('\n');
 
-    // Get current HTML and inject the embedded script before </body>
     try {
+      // Get the full page HTML
       let html = document.documentElement.outerHTML;
-      // Remove any existing embedded data script to avoid duplication
-      html = html.replace(/<script id="__embedded_data__">[\s\S]*?<\/script>/g, '');
-      // Inject before </body>
-      const bodyClose = html.lastIndexOf('</body>');
-      if (bodyClose !== -1) {
-        html = html.slice(0, bodyClose) + '\n' + embedScript + '\n</body></html>';
+
+      // Strip any previous embedded data block
+      html = html.replace(/<script id="__embedded_data__"[\s\S]*?<\/script>/g, '');
+
+      // Inject embed block just before </body>
+      const closeBody = html.lastIndexOf('<\/body>');
+      if (closeBody !== -1) {
+        html = html.slice(0, closeBody) + '\n' + embedBlock + '\n<\/body><\/html>';
       } else {
-        html += '\n' + embedScript;
+        html = html + '\n' + embedBlock;
       }
 
-      const blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+      // Trigger download
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
       const url  = URL.createObjectURL(blob);
       const a    = document.createElement('a');
       a.href     = url;
       a.download = 'netflox-para-voce.html';
+      a.style.display = 'none';
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
-      setTimeout(() => URL.revokeObjectURL(url), 2000);
-      toast('✅ Arquivo baixado com sucesso!');
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 3000);
+      toast('✅ Arquivo baixado! Envie para ela 💌');
     } catch(err) {
-      toast('❌ Erro ao exportar: ' + err.message);
+      toast('❌ Erro: ' + err.message);
     }
-  }, 500);
+  }, 600);
 }
+
+/* ═══════════════════════════════
+   INIT
+═══════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  restoreAllImages();
+});
 </script>
 </body></html>
